@@ -1,0 +1,9 @@
+{
+  "id": "ripe-syntax",
+  "name": "Ripe Syntax Highlighting",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "Syntax highlighting for Ripe code blocks in reading view and live preview.",
+  "author": "ripe-lang",
+  "isDesktopOnly": false
+}
