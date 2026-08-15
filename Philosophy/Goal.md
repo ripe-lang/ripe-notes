@@ -1,11 +1,11 @@
 ---
 status: draft
 area: philosophy
-updated: 2026-08-14
+updated: 2026-08-15
 ---
-What do I want Ripe to be?
+# What do I want Ripe to be?
 
-Ripe is a systems language where the compiler does the **bookkeeping** and the **programmer makes the decisions**. 
+Ripe is a systems language where the compiler does the **bookkeeping** and the **programmer makes the decisions**.
 
 The simplest answer is type inference. The compiler knows that the right hand side is an integer.
 
@@ -13,7 +13,7 @@ The simplest answer is type inference. The compiler knows that the right hand si
 var x = 5
 ```
 
-But you have the full control of the language to decide when you want to create or destroy objects. 
+But you have the full control of the language to decide when you want to create or destroy objects.
 
 Also, **minimalism** is the second highest priority to have easy of use of a high level language but the control of a low level one, so safety is a priority.
 
@@ -27,9 +27,11 @@ Before I add a new feature to Ripe, I have to three rules that have to hold, oth
 
 No more the days where you have to count how many characters are in “Hello”, no more hidden surprises,  and you have full control over the language. Well none of this is new, however, I’m trying to stick to these principals for my own language.
 
+The caveat is increasing the language power and meta programming capabilities increases the compilers complexity and potential error source, but by carefully designing explicit features should hopefully mitigate this. Also, having one or two of the same ways of doing something makes people have to remember the multiple ways. I'll probably only allow this if it's between an explicit and implicit version.
+
 ## Every feature works with every other feature
 
-What the title says. If I implement strings in my language they should be be able to interact with structs, enums, local inference, etc. I’m not going to restrict myself by saying it’s the compiler or parser structure because that just calls for a rewrite. I need to have an actual reason from the looking closely at the schematics and how it will behaves with the language. 
+What the title says. If I implement strings in my language they should be be able to interact with structs, enums, local inference, etc. I’m not going to restrict myself by saying it’s the compiler or parser structure because that just calls for a rewrite. I need to have an actual reason from the looking closely at the schematics and how it will behaves with the language.
 
 The only thing I have to watch for is that the new declaration get an explicit placement rule and that every new expression is checked in every position that accepts a value.
 
@@ -41,17 +43,17 @@ However, this is pretty limited thinking because no innovation comes from this. 
 
 ```ripe
 var x = if x > 5 { 5 } else { 3 }
-``` 
+```
 
-In the end you’re either returning some value, variable, or a function that has it’s own value. 
+In the end you’re either returning some value, variable, or a function that has it’s own value.
 
-The point is that you can write it without stopping. If a thing needs a trip to the docs to use the second time then it failed. This is why so much is an expression and why more thing should be first class. 
+The point is that you can write it without stopping. If a thing needs a trip to the docs to use the second time then it failed. This is why so much is an expression and why more thing should be first class.
 
 ## Speed is a feature
 
 Software is getting slower and a compiler are no different. I am making the effort even this early to keep my compiler  fast by making deliberate choices of the way I write my code in Ocaml, so using tail recursion heavily or cutting down the `Hashtbl` innovations. There will be some overhead because I won’t be writing my own assembler or linker but I can still make the attempt.
 
-I don’t have this problem now, but a slow compiler changes how people write. You end up batching up a bunch of changes and stop trying thing and stop running the test. 
+I don’t have this problem now, but a slow compiler changes how people write. You end up batching up a bunch of changes and stop trying thing and stop running the test.
 
 ## Function names
 
@@ -59,6 +61,6 @@ The UNIX creators loved shortening every name () [creat](https://man7.org/linux/
 
 ## Finishing what I start
 
-This has to do with a bit with intuition beats cleverness. A language becomes difficult to use when you are asked to spell things out and remember its gaps. I recently implemented ranges (`a[1..3]`) into my language. I covered every possible case `[..=3]`. I believe a feature covering most of its own cases is worse than one covering none, because now there is a line to memorize about which half works. 
+This has to do with a bit with intuition beats cleverness. A language becomes difficult to use when you are asked to spell things out and remember its gaps. I recently implemented ranges (`a[1..3]`) into my language. I covered every possible case `[..=3]`. I believe a feature covering most of its own cases is worse than one covering none, because now there is a line to memorize about which half works.
 
 A good test is going to be whether somebody can guess. If they can guess the shape from one they already know then it should work, and if it doesn't that is a bug in the language not their expectations.
